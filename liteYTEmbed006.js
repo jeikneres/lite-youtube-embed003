@@ -11,31 +11,41 @@ class LiteYTEmbed extends HTMLElement {
 
         this.upgradePosterImage();
 
-        if (!playBtnEl) {
-            playBtnEl = document.createElement('button');
-            playBtnEl.type = 'button';
-            playBtnEl.classList.add('lty-playbtn');
-            this.append(playBtnEl);
+      if (!playBtnEl) {
+    playBtnEl = document.createElement('button');
+    playBtnEl.type = 'button';
+    playBtnEl.classList.add('lty-playbtn');
+    
+    // Estilos para centralizar o botão
+    this.style.display = 'flex';         // Habilita flexbox no contêiner
+    this.style.justifyContent = 'center'; // Centraliza horizontalmente
+    this.style.alignItems = 'center';     // Centraliza verticalmente
+    this.style.position = 'relative';    // Para garantir que o botão se posicione corretamente
+
+    this.append(playBtnEl);
+}
+
+if (!playBtnEl.textContent) {
+    const playBtnLabelEl = document.createElement('span');
+    playBtnLabelEl.className = 'lyt-visually-hidden';
+    playBtnLabelEl.textContent = this.playLabel;
+    playBtnEl.append(playBtnLabelEl);
+}
+
+this.addNoscriptIframe();
+
+if (playBtnEl.nodeName === 'A') {
+    playBtnEl.removeAttribute('href');
+    playBtnEl.setAttribute('tabindex', '0');
+    playBtnEl.setAttribute('role', 'button');
+    playBtnEl.addEventListener('keydown', e => {
+        if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            this.activate();
         }
+    });
+}
 
-        if (!playBtnEl.textContent) {
-            const playBtnLabelEl = document.createElement('span');
-            playBtnLabelEl.className = 'lyt-visually-hidden';
-            playBtnLabelEl.textContent = this.playLabel;
-            playBtnEl.append(playBtnLabelEl);
-        }
-
-        this.addNoscriptIframe();
-
-        if (playBtnEl.nodeName === 'A') {
-            playBtnEl.removeAttribute('href');
-            playBtnEl.setAttribute('tabindex', '0');
-            playBtnEl.setAttribute('role', 'button');
-            playBtnEl.addEventListener('keydown', e => {
-                if (e.key === 'Enter' || e.key === ' ') {
-                    e.preventDefault();
-                    this.activate();
-                }
             });
         }
 
