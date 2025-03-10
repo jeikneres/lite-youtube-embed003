@@ -161,7 +161,17 @@ class LiteYTEmbed extends HTMLElement {
             };
         }, 100);
     }
+
+    // Método para centralizar o botão
+    static styleButtonCenter() {
+        const playBtnEl = document.querySelector('.lty-playbtn');
+        if (playBtnEl) {
+            playBtnEl.style.position = 'absolute';
+            playBtnEl.style.top = '50%';
+            playBtnEl.style.left = '50%';
+            playBtnEl.style.transform = 'translate(-50%, -50%)';
+        }
+    }
 }
 
 customElements.define('lite-youtube', LiteYTEmbed);
-
