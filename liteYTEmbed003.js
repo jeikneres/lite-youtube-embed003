@@ -1,4 +1,3 @@
-
 class LiteYTEmbed extends HTMLElement {
     connectedCallback() {
         this.videoId = this.getAttribute('videoid');
@@ -134,11 +133,13 @@ class LiteYTEmbed extends HTMLElement {
     createBasicIframe() {
         const iframeEl = document.createElement('iframe');
         iframeEl.width = 500;
-        iframeEl.height = 500;
+        iframeEl.height = 400;
         iframeEl.title = this.playLabel;
         iframeEl.allow = 'accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture';
         iframeEl.allowFullscreen = !0;
         iframeEl.src = `https://www.youtube-nocookie.com/embed/${encodeURIComponent(this.videoId)}?${this.getParams().toString()}`;
+        iframeEl.style.maxWidth = '100%';
+        iframeEl.style.height = 'auto';
         return iframeEl;
     }
 
@@ -153,9 +154,14 @@ class LiteYTEmbed extends HTMLElement {
                 const noAvailablePoster = e.target.naturalHeight == 90 && e.target.naturalWidth == 120;
                 if (noAvailablePoster) return;
                 this.style.backgroundImage = `url("${webpUrl}")`;
+                this.style.backgroundSize = 'cover';
+                this.style.backgroundPosition = 'center';
+                this.style.height = '400px';
+                this.style.maxWidth = '500px';
             };
         }, 100);
     }
 }
 
 customElements.define('lite-youtube', LiteYTEmbed);
+
