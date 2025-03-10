@@ -17,10 +17,10 @@ class LiteYTEmbed extends HTMLElement {
     playBtnEl.classList.add('lty-playbtn');
     
     // Estilos para centralizar o botão
-    this.style.display = 'flex';         // Habilita flexbox no contêiner
+    this.style.display = 'center';         // Habilita flexbox no contêiner
     this.style.justifyContent = 'center'; // Centraliza horizontalmente
     this.style.alignItems = 'center';     // Centraliza verticalmente
-    this.style.position = 'relative';    // Para garantir que o botão se posicione corretamente
+    this.style.position = 'center';    // Para garantir que o botão se posicione corretamente
 
     this.append(playBtnEl);
 }
