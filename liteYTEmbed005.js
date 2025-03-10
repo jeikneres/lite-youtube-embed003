@@ -132,8 +132,8 @@ class LiteYTEmbed extends HTMLElement {
 
     createBasicIframe() {
         const iframeEl = document.createElement('iframe');
-        iframeEl.width = 500;
-        iframeEl.height = 400;
+        iframeEl.style.width = '80vw'; 
+        iframeEl.style.height = '45vw';
         iframeEl.title = this.playLabel;
         iframeEl.allow = 'accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture';
         iframeEl.allowFullscreen = !0;
@@ -156,8 +156,8 @@ class LiteYTEmbed extends HTMLElement {
                 this.style.backgroundImage = `url("${webpUrl}")`;
                 this.style.backgroundSize = 'cover';
                 this.style.backgroundPosition = 'center';
-                this.style.height = '400px';
-                this.style.maxWidth = '500px';
+                this.style.height = '50vh';
+                this.style.maxWidth = '80vw';
             };
         }, 100);
     }
